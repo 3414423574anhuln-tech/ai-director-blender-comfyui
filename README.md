@@ -1,5 +1,7 @@
 # AI Director for Blender + ComfyUI
 
+**English** | [简体中文](README.zh-CN.md)
+
 A prototype 3D director workflow that connects Blender camera and character direction data to ComfyUI.
 
 ## Features

@@ -91,3 +91,7 @@ This is an early prototype.
 - Camera frustum refresh may need to be triggered after some camera parameter changes.
 - The Blender scene currently expects a camera named `机位1` and uses `角色A` as the base character template.
 - Multi-shot timeline editing and pose-rig authoring are not implemented yet.
+
+## License
+
+MIT License. See `LICENSE`.

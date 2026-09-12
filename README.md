@@ -1,28 +1,28 @@
-# AI Director for Blender + ComfyUI
+# Blender + ComfyUI AI Director
 
-**English** | [简体中文](README.zh-CN.md)
+**简体中文** | [English](README.en.md)
 
-A prototype 3D director workflow that connects Blender camera and character direction data to ComfyUI.
+这是一个 3D 导演工作流原型，用于把 Blender 中的相机、角色站位和导演参数传递到 ComfyUI。
 
-## Features
+## 功能
 
-- Blender 3D director panel
-- Director View / Camera View switching
-- Visible camera frustum
-- Lightweight mannequin characters
-- Character presets and complete-character duplication
-- Shot size, camera movement, duration, action, and mood controls
-- One-click export of `director_scene.json`
-- ComfyUI `AI Director Loader` custom node
-- Automatic ComfyUI refresh when the exported JSON changes
+- Blender 3D 导演台面板
+- 导演视角 / 机位视角一键切换
+- 明显可见的相机视锥
+- 轻量级导演预演人物模型
+- 多种人物预设与完整角色复制
+- 景别、运镜、时长、人物动作和画面情绪控制
+- 一键导出 `director_scene.json`
+- ComfyUI `AI Director Loader` 自定义节点
+- 导出的 JSON 发生变化后，ComfyUI 可自动重新读取
 
-## Requirements
+## 环境要求
 
-- Blender 5.2 or compatible Blender version
+- Blender 5.2 或兼容版本
 - ComfyUI
-- Windows is currently the primary tested target
+- 当前主要测试平台为 Windows
 
-## Repository layout
+## 仓库结构
 
 ```text
 blender_addon/
@@ -37,45 +37,55 @@ examples/
   director_scene.example.json
 ```
 
-## Blender installation
+## 安装 Blender 插件
 
-1. Open Blender.
-2. Go to `Edit > Preferences > Add-ons`.
-3. Choose `Install from Disk`.
-4. Select `blender_addon/ai_director_stage_tools.py`.
-5. Enable **AI Director Stage Tools**.
-6. In the 3D View, press `N`.
-7. Open the **3D导演台** tab.
+1. 打开 Blender。
+2. 进入 `Edit > Preferences > Add-ons`。
+3. 选择 `Install from Disk`。
+4. 选择 `blender_addon/ai_director_stage_tools.py`。
+5. 启用 **AI Director Stage Tools**。
+6. 在 3D View 中按 `N`。
+7. 打开 **3D导演台** 标签页。
 
-## ComfyUI installation
+## 安装 ComfyUI 节点
 
-Copy:
+将：
 
 ```text
 comfyui_custom_node/ComfyUI-AI-Director
 ```
 
-to:
+复制到：
 
 ```text
 ComfyUI/custom_nodes/ComfyUI-AI-Director
 ```
 
-Restart ComfyUI and search for `AI Director Loader`.
+然后重启 ComfyUI，并搜索：
 
-## Connecting Blender to ComfyUI
+```text
+AI Director Loader
+```
 
-In Blender:
+## Blender 连接 ComfyUI
 
-1. Open `N > 3D导演台`.
-2. Find **导演输出**.
-3. Set **ComfyUI目录** to your actual `ComfyUI/custom_nodes/ComfyUI-AI-Director` folder.
-4. Set shot size, camera movement, duration, action, and mood.
-5. Click **导出到 ComfyUI**.
+在 Blender 中：
 
-Blender writes `director_scene.json` into the ComfyUI custom node folder.
+1. 打开 `N > 3D导演台`。
+2. 找到 **导演输出**。
+3. 将 **ComfyUI目录** 设置为你实际的 `ComfyUI/custom_nodes/ComfyUI-AI-Director` 文件夹。
+4. 设置景别、运镜、时长、人物动作和画面情绪。
+5. 点击 **导出到 ComfyUI**。
 
-The ComfyUI loader outputs:
+Blender 会把：
+
+```text
+director_scene.json
+```
+
+写入 ComfyUI 自定义节点目录。
+
+ComfyUI 的 `AI Director Loader` 会输出：
 
 - `prompt`
 - `shot`
@@ -84,16 +94,16 @@ The ComfyUI loader outputs:
 - `duration_s`
 - `camera_data`
 
-## Current limitations
+## 当前限制
 
-This is an early prototype.
+这是一个早期原型。
 
-- The mannequin system is lightweight and not a full production rig.
-- The current workflow exports one global director instruction block.
-- Camera frustum refresh may need to be triggered after some camera parameter changes.
-- The Blender scene currently expects a camera named `机位1` and uses `角色A` as the base character template.
-- Multi-shot timeline editing and pose-rig authoring are not implemented yet.
+- 当前人物系统是轻量级导演预演模型，不是完整的影视级角色 Rig。
+- 当前工作流只导出一组全局导演指令。
+- 修改部分相机参数后，可能需要手动刷新相机视锥。
+- 当前 Blender 场景默认要求存在名为 `机位1` 的相机，并使用 `角色A` 作为基础人物模板。
+- 多镜头时间线编辑和完整姿势 Rig 编辑尚未实现。
 
 ## License
 
-MIT License. See `LICENSE`.
+MIT License，详见 `LICENSE`。
